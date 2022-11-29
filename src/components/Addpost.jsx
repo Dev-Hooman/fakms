@@ -13,6 +13,9 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
+import { useContext } from 'react';
+import { StateContext } from '../context/StateContext';
+
 const icon = (
   <Paper sx={{ m: 1 }} elevation={4}>
     <Box component='svg' sx={{ width: 100, height: 100 }}>
@@ -45,11 +48,11 @@ export default function Addpost() {
   const handleClick = () => {
     setOpenmanu(!openmanu);
   };
-  const [open, setOpen] = useState(false);
+  const {open, setOpen} = useContext(StateContext);
 
   return (
     <Box>
-      <Tooltip
+      {/* <Tooltip
         onClick={(e) => setOpen(true)}
         title='Add'
         sx={{
@@ -58,10 +61,13 @@ export default function Addpost() {
           right: { xs: 'calc(10px)', md: 60 },
         }}
       >
+        
         <Fab color='primary' aria-label='Add'>
           <Add style={{ color: 'white !important' }} />
         </Fab>
-      </Tooltip>
+      </Tooltip> */}
+
+      
       <StyleModal
         open={open}
         onClose={(e) => setOpen(false)}
@@ -86,6 +92,9 @@ export default function Addpost() {
           >
             <Close style={{ color: 'white !important' }} />
           </Tooltip>
+
+
+          
           <h3 style={{ marginTop: '40px' }}>FAK ULD Location</h3>
           <Box sx={{ mt: '5px', bgcolor: 'white' }}>
             <ListItemButton onClick={handleClick}>

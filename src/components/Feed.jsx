@@ -7,7 +7,8 @@ import {
   InputBase,
   Paper,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { StateContext } from '../context/StateContext';
 
 import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -15,6 +16,7 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -125,6 +127,12 @@ export default function Feed() {
   //   return items.value === e.target.value;
   // });
   // console.log(currency);
+
+  const {setOpen} = useContext(StateContext)
+  const openSideBar = () => {
+    setOpen(true);
+    setAnchorEl(null);
+  }
 
   return (
     <Box
@@ -252,8 +260,8 @@ export default function Feed() {
                   open={open}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose} disableRipple>
-                    <Add />
+                  <MenuItem onClick={openSideBar} disableRipple>
+                    <Add  />
                     Add
                   </MenuItem>
                   <MenuItem onClick={handleClose} disableRipple>
